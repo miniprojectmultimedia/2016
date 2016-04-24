@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>
+            Pacman 
+        </title>
+		<canvas ID="myCanvas" width="510" height="510"></canvas>
+		<script type="text/javascript" src="Grid.js"></script>
+        <script type="text/javascript" src="Pacman.js"></script>
+        <script type="text/javascript" src="Ghost.js"></script>
+        <script type="text/javascript" src="game.js"></script>
+        <script type="text/javascript">
+             window.fetchScores = function() {
+                var scores =   ( localStorage && localStorage.scores && localStorage.scores.length ) ? JSON.parse(localStorage.scores) : [];
+
+                scores.sort(function(a, b){ return (a.score < b.score ? 1 : (a.score > b.score ? -1 : 0) ) })
+                return scores;
+            };
+
+            window.addScore = function(obj) {
+                var scores = fetchScores();
+                console.log(scores)
+                scores.push(obj);
+                localStorage.scores = JSON.stringify(scores);
+            };
+
+        </script>
+    </head>
+</html>
